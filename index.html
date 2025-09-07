@@ -7,21 +7,148 @@
     <title>Assignment Six</title>
 
     <!-- font awesome cdn -->
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- tailwind + daisyUI cds -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
     <!-- stylesheet -->
-     <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/style.css">
+
+    <!-- font integration -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
 
 </head>
 
 <body>
+    <!-- Navbar Section -->
     <header>
-        <h1 class="text-red-600">My Six Assignment</h1>
+        <div class="navbar bg-[#15803d] shadow-sm px-2">
+            <div class="navbar-start">
+                <div class="dropdown">
+                    <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h8m-8 6h16" />
+                        </svg>
+                    </div>
+                    <ul tabindex="0"
+                        class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+                        <li><a>About</a></li>
+                        <li><a>Gallery</a></li>
+                        <li><a>Plant a Tree</a></li>
+                    </ul>
+                </div>
+                <img class="w-6 h-6 mr-3" src="./assets/nav-logo.png" alt="">
+                <img src="./assets/Green Earth.png" alt="">
+            </div>
+            <div class="navbar-center hidden lg:flex">
+                <ul class="menu menu-horizontal px-1">
+                    <li><a class="text-white">About</a></li>
+                    <li><a class="text-white">Gallery</a></li>
+                    <li><a class="text-white">Plant a Tree</a></li>
+                </ul>
+            </div>
+            <div class="navbar-end">
+                <a class="btn bg-[#facc15] text-[#15803d] rounded-full">Plant a Tree</a>
+            </div>
+        </div>
     </header>
+
+
+    <!-- banner Section -->
+    <section
+        class="relative bg-[#cff0dc] py-16 px-6 md:px-12 flex items-center justify-center text-center overflow-hidden">
+
+        <img class="absolute left-0 bottom-0 w-28 md:w-52 lg:w-[383px] transform -rotate-10"
+            src="./assets/hero-leaf1.png" alt="">
+        <img class="absolute right-0 bottom-0 w-28 md:w-52 lg:w-[383px] transform rotate-10"
+            src="./assets/hero-leaf2.png" alt="">
+
+        <div class="max-w-xl z-10">
+            <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold text-[#1f2937] mb-4">
+                Plant a Tree, Grow a Future
+            </h1>
+            <p class="text-[#1f2937] mb-6">
+                Join our mission to plant 1 million trees and make the Earth greener for future
+                generations.
+            </p>
+            <button
+                class="inline-block bg-[#facc15] hover:bg-yellow-500 text-[#15803d] font-medium px-6 py-3 rounded-full transition">
+                Get Involved</button>
+        </div>
+    </section>
+
+
+    <!-- About Campaign Section -->
+    <section>
+        <div class="bg-green-50 p-6 md:p-12">
+            <div class="max-w-5xl mx-auto">
+                <h2 class="text-2xl md:text-3xl font-semibold text-center mb-8 text-[#1f2937]">About the Campaign</h2>
+
+                <div class="flex flex-col md:flex-row items-center gap-8">
+                    <!-- image -->
+                    <div class="w-full md:w-1/2">
+                        <img class="rounded-md w-full object-cover" src="./assets/about.png" alt="">
+                    </div>
+
+                    <!-- text -->
+                    <div class="w-full md:w-1/2 text-[#1f2937]">
+                        <p class="mb-4">
+                            Green Earth is a global tree plantation initiative dedicated to fighting climate change.
+                            Since our start, we’ve planted over 500,000 trees worldwide. By joining our campaign, you
+                            help restore forests, create habitats for wildlife, and combat global warming.
+                        </p>
+                        <ul class="list-disc list-inside space-y-1">
+                            <li>Restoration of natural habitats</li>
+                            <li>Improvement of air quality</li>
+                            <li>Support for local communities</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Our Impact Section -->
+    <section>
+        <div class="bg-[#cff0dc] py-10">
+            <div class="max-w-6xl mx-auto px-4 text-center">
+                <h2 class="text-3xl font-semibold text-[#1f2937] mb-8">Our Impact</h2>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+
+                    <!-- Our Impact Card 1 -->
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <p class="text-[#15803d] text-3xl font-semibold mb-1">500K+</p>
+                        <p class="text-[#1f2937]">Trees Planted</p>
+                    </div>
+
+                    <!-- Our Impact Card 2 -->
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <p class="text-[#15803d] text-3xl font-semibold mb-1">120+</p>
+                        <p class="text-[#1f2937]">Communities Involved</p>
+                    </div>
+
+                    <!-- Our Impact Card 3 -->
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <p class="text-[#15803d] text-3xl font-semibold mb-1">30+</p>
+                        <p class="text-[#1f2937]">Countries Reached</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
 
 
     <script src="./script/index.js"></script>
