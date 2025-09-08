@@ -1,3 +1,14 @@
+// Spinner Function
+const manageSpinner = (status) => {
+    if (status == true) {
+        document.getElementById("spinner").classList.remove("hidden");
+        document.getElementById("plant-container").classList.add("hidden");
+    } else {
+        document.getElementById("plant-container").classList.remove("hidden");
+        document.getElementById("spinner").classList.add("hidden");
+    }
+};
+
 
 // Get 🌴All categories
 
@@ -10,6 +21,7 @@ const loadCategories = () => {
 // Get 🌴All Plants
 
 const loadAllTrees = () => {
+    manageSpinner(true);
     fetch("https://openapi.programming-hero.com/api/plants")
         .then((res) => res.json())
         .then((data) => displayAllTrees(data.plants));
@@ -55,15 +67,12 @@ const displayAllTrees = (plants) => {
                     to Cart</button>
                 </div>    
              </div>
-
-
-            
-            `;
-
+`;
         plantContainer.append(card);
+
     });
 
-
+manageSpinner(false);
 
 };
 
@@ -79,6 +88,7 @@ const removeActive = () => {
 // Get 🌴plants by categories
 
 const loadPlantCategory = (id) => {
+    manageSpinner(true);
     // console.log(id);
     const url = `https://openapi.programming-hero.com/api/category/${id}`;
     // console.log(url);
@@ -96,7 +106,7 @@ const loadPlantCategory = (id) => {
 
 
 // Get 🌴Plants Detail
-const loadPlantDetail = async(id) => {
+const loadPlantDetail = async (id) => {
     const url = `https://openapi.programming-hero.com/api/plant/${id}`;
     // console.log(url);
     const res = await fetch(url);
@@ -115,9 +125,9 @@ const loadPlantDetail = async(id) => {
 
 // Display 🌴Plants Detail
 const displayPlantDetails = (plant) => {
-        console.log(plant);
-        const detailsBox = document.getElementById("details-container");
-        detailsBox.innerHTML = `
+    console.log(plant);
+    const detailsBox = document.getElementById("details-container");
+    detailsBox.innerHTML = `
         <div class="bg-white rounded shadow p-3 flex flex-col h-full">
 
                     <div class="h-50 rounded bg-gray-100 mb-3 overflow-hidden">
@@ -133,7 +143,7 @@ const displayPlantDetails = (plant) => {
                 <p class="text-xs text-gray-600"><strong>Description:</strong> ${plant.description}</p>
         </div>
     `;
-        document.getElementById("plant_modal").showModal();
+    document.getElementById("plant_modal").showModal();
 
 };
 
@@ -193,6 +203,7 @@ const displayPlantCategory = (plants) => {
 
         plantContainer.append(card);
     });
+    manageSpinner(false);
 };
 
 
