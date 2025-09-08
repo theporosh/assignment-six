@@ -36,7 +36,7 @@ const displayAllTrees = (plants) => {
                      <img class="w-full h-full object-cover rounded" src="${plant.image}" alt="">
                     </div>
 
-                    <h3 class="font-semibold text-sm mb-1">${plant.name}</h3>
+                    <h3 onclick="loadPlantDetail(${plant.id})" class="font-semibold text-sm mb-1">${plant.name}</h3>
 
                     <div class="flex-1">
                     <p class="text-xs text-gray-600 mb-2">${plant.description}</p>
@@ -47,7 +47,7 @@ const displayAllTrees = (plants) => {
                 <span
                   class="inline-block text-xs px-2 py-1 bg-green-100 text-green-700 rounded mb-2 geist-font">
                   ${plant.category}</span>
-                <span class="font-semibold">${plant.price}</span>
+                <span class="font-semibold"><i class="fa-solid fa-bangladeshi-taka-sign"></i> ${plant.price}</span>
                 </div>
 
                    <button
@@ -94,6 +94,49 @@ const loadPlantCategory = (id) => {
         });
 };
 
+
+// Get 🌴Plants Detail
+const loadPlantDetail = async(id) => {
+    const url = `https://openapi.programming-hero.com/api/plant/${id}`;
+    // console.log(url);
+    const res = await fetch(url);
+    const details = await res.json();
+    displayPlantDetails(details.plants);
+};
+
+// {
+//     "id": 1,
+//     "image": "https://i.ibb.co.com/cSQdg7tf/mango-min.jpg",
+//     "name": "Mango Tree",
+//     "description": "A fast-growing tropical tree that produces delicious, juicy mangoes during summer. Its dense green canopy offers shade, while its sweet fruits are rich in vitamins and minerals.",
+//     "category": "Fruit Tree",
+//     "price": 500
+// }
+
+// Display 🌴Plants Detail
+const displayPlantDetails = (plant) => {
+        console.log(plant);
+        const detailsBox = document.getElementById("details-container");
+        detailsBox.innerHTML = `
+        <div class="bg-white rounded shadow p-3 flex flex-col h-full">
+
+                    <div class="h-50 rounded bg-gray-100 mb-3 overflow-hidden">
+                        <h3 class="font-bold text-xl mb-1">${plant.name}</h3>
+                        <img class="w-full h-full object-cover rounded" src="${plant.image}" alt="">
+                    </div>
+
+                <span
+                class="text-xs mb-2 geist-font"><strong>Category:</strong>
+                ${plant.category}</span>
+                <span class="text-xs mb-2"><strong>Price:</strong> 
+                <i class="fa-solid fa-bangladeshi-taka-sign"></i> ${plant.price}</span>
+                <p class="text-xs text-gray-600"><strong>Description:</strong> ${plant.description}</p>
+        </div>
+    `;
+        document.getElementById("plant_modal").showModal();
+
+};
+
 // Display 🌴plants by categories
 
 const displayPlantCategory = (plants) => {
@@ -124,7 +167,7 @@ const displayPlantCategory = (plants) => {
                      <img class="w-full h-full object-cover rounded" src="${plant.image}" alt="">
                     </div>
 
-                    <h3 onclick="my_modal_5.showModal()" class="font-semibold text-sm mb-1">${plant.name}</h3>
+                    <h3 onclick="loadPlantDetail(${plant.id})" class="font-semibold text-sm mb-1">${plant.name}</h3>
 
                     <div class="flex-1">
                     <p class="text-xs text-gray-600 mb-2">${plant.description}</p>
@@ -135,7 +178,7 @@ const displayPlantCategory = (plants) => {
                 <span
                   class="inline-block text-xs px-2 py-1 bg-green-100 text-green-700 rounded mb-2 geist-font">
                   ${plant.category}</span>
-                <span class="font-semibold">${plant.price}</span>
+                <span class="font-semibold"><i class="fa-solid fa-bangladeshi-taka-sign"></i> ${plant.price}</span>
                 </div>
 
                    <button
