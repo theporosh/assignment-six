@@ -105,17 +105,18 @@
 
                         <h2 class="font-semibold mb-3">Categories</h2>
 
-                        <div id="all-plants">
-                            <!-- Get 🌴All Plants to display as default -->
-                            <button class="btn btn-soft btn-success w-full justify-start text-left hover:bg-green-700 text-gray-800">All
+                         <!-- Get 🌴All Plants to display as default -->
+                        <div>
+                           <button class="btn btn-soft btn-success w-full justify-start text-left text-gray-800">All
                             Trees</button>
                         </div>
 
 
-                        <ul id="category-container" class="space-y-2">
+                        <div id="category-container" class="space-y-2">
                             <!--  Display 🌴All categories here -->
 
-                        </ul>
+                        </div>
+
                     </div>
                 </aside>
 
@@ -262,6 +263,24 @@
             <p class="text-sm">&copy; 2025 Green Earth. All Rights Reserved.</p>
         </div>
     </footer>
+
+
+    <!-- Modal -->
+     <!-- Open the modal using ID.showModal() method -->
+<!-- <button class="btn" onclick="my_modal_5.showModal()">open modal</button> -->
+
+<dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+  <div class="modal-box">
+    <h3 class="text-lg font-bold">Hello!</h3>
+    <p class="py-4">Press ESC key or click the button below to close</p>
+    <div class="modal-action">
+      <form method="dialog">
+        <!-- if there is a button in form, it will close the modal -->
+        <button class="btn">Close</button>
+      </form>
+    </div>
+  </div>
+</dialog>
 
 
     <script src="./script/index.js"></script>

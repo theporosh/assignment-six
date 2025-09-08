@@ -18,13 +18,13 @@ const loadAllTrees = () => {
 // display 🌴All Plants
 
 const displayAllTrees = (plants) => {
-    console.log(plants);
+    // console.log(plants);
 
     const plantContainer = document.getElementById("plant-container");
     plantContainer.innerHTML = "";
 
-// For Display all Trees
- plants.forEach(plant => {
+    // For Display all Trees
+    plants.forEach(plant => {
         // console.log(plant);
 
         const card = document.createElement("div");
@@ -69,6 +69,13 @@ const displayAllTrees = (plants) => {
 
 loadAllTrees();
 
+// Active Class Function
+const removeActive = () => {
+    const categoryButtons = document.querySelectorAll(".category-btn");
+    // console.log(categoryButtons);
+    categoryButtons.forEach((btn) => btn.classList.remove("active"));
+};
+
 // Get 🌴plants by categories
 
 const loadPlantCategory = (id) => {
@@ -77,7 +84,14 @@ const loadPlantCategory = (id) => {
     // console.log(url);
     fetch(url)
         .then((res) => res.json())
-        .then((data) => displayPlantCategory(data.plants));
+        // .then((data) => displayPlantCategory(data.plants));
+        .then((data) => {
+            removeActive(); // remove all active class
+            const clickBtn = document.getElementById(`category-btn-${id}`);
+            // console.log(clickBtn);
+            clickBtn.classList.add("active"); // add active class
+            displayPlantCategory(data.plants)
+        });
 };
 
 // Display 🌴plants by categories
@@ -110,7 +124,7 @@ const displayPlantCategory = (plants) => {
                      <img class="w-full h-full object-cover rounded" src="${plant.image}" alt="">
                     </div>
 
-                    <h3 class="font-semibold text-sm mb-1">${plant.name}</h3>
+                    <h3 onclick="my_modal_5.showModal()" class="font-semibold text-sm mb-1">${plant.name}</h3>
 
                     <div class="flex-1">
                     <p class="text-xs text-gray-600 mb-2">${plant.description}</p>
@@ -151,12 +165,12 @@ const displayCategory = (trees) => {
         // 3. create Element
         // console.log(tree);
 
-        const btnUl = document.createElement("ul");
+        const btnUl = document.createElement("div");
         btnUl.innerHTML = `
-        <li>
-        <button onclick="loadPlantCategory(${tree.id})"
-        class="btn btn-soft btn-success w-full justify-start text-left hover:bg-green-700 text-gray-800">${tree.category_name}</button>
-        </li>
+
+        <button id="category-btn-${tree.id}" onclick="loadPlantCategory(${tree.id})"
+        class="btn btn-soft btn-success w-full justify-start text-left text-gray-800 category-btn">${tree.category_name}</button>
+        
     `;
         // 4. append into container
         categoryContainer.append(btnUl);
