@@ -248,7 +248,7 @@ const totalContainer = document.getElementById("cart-total");
 
 // Add to Cart Handler
 const addToCart = (plant) => {
-    // Check if plant already exists in cart
+    // Checking if plant already exists in cart
     const existing = cart.find(item => item.id === plant.id);
     if (!existing) {
         cart.push({ ...plant, quantity: 1 });
