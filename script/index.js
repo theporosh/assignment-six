@@ -59,10 +59,10 @@ const displayAllTrees = (plants) => {
                 <span
                   class="inline-block text-xs px-2 py-1 bg-green-100 text-green-700 rounded mb-2 geist-font">
                   ${plant.category}</span>
-                <span class="font-semibold"><i class="fa-solid fa-bangladeshi-taka-sign"></i> ${plant.price}</span>
+                <span class="font-semibold"><i class="fa-solid fa-bangladeshi-taka-sign"></i>${plant.price}</span>
                 </div>
 
-                   <button
+                   <button onclick='addToCart(${JSON.stringify(plant)})'
                     class="w-full bg-green-700 text-white py-2 rounded-full hover:bg-green-800 transition text-sm">Add
                     to Cart</button>
                 </div>    
@@ -188,10 +188,10 @@ const displayPlantCategory = (plants) => {
                 <span
                   class="inline-block text-xs px-2 py-1 bg-green-100 text-green-700 rounded mb-2 geist-font">
                   ${plant.category}</span>
-                <span class="font-semibold"><i class="fa-solid fa-bangladeshi-taka-sign"></i> ${plant.price}</span>
+                <span class="font-semibold"><i class="fa-solid fa-bangladeshi-taka-sign"></i>${plant.price}</span>
                 </div>
 
-                   <button
+                   <button onclick='addToCart(${JSON.stringify(plant)})'
                     class="w-full bg-green-700 text-white py-2 rounded-full hover:bg-green-800 transition text-sm">Add
                     to Cart</button>
                 </div>    
@@ -233,6 +233,69 @@ const displayCategory = (trees) => {
 };
 
 loadCategories();
+
+
+
+
+
+
+// Add to Cart Functionalities start here
+
+const cart = []; // Cart state
+
+const cartContainer = document.getElementById("cart-container");
+const totalContainer = document.getElementById("cart-total");
+
+// Add to Cart Handler
+const addToCart = (plant) => {
+    // Check if plant already exists in cart
+    const existing = cart.find(item => item.id === plant.id);
+    if (!existing) {
+        cart.push({ ...plant, quantity: 1 });
+        alert(`${plant.name} has been added to the cart`);
+    } else {
+        existing.quantity++;
+        alert(`${plant.name} quantity increased in the cart`);
+    }
+
+    updateCartUI();
+};
+
+// Remove from Cart Handler
+const removeFromCart = (id) => {
+    const index = cart.findIndex(item => item.id === id);
+    if (index !== -1) {
+        cart.splice(index, 1);
+        updateCartUI();
+    }
+};
+
+// Update Cart UI and Total
+const updateCartUI = () => {
+    cartContainer.innerHTML = "";
+    let total = 0;
+
+    cart.forEach(item => {
+        total += item.price * item.quantity;
+
+        const cartItem = document.createElement("div");
+        cartItem.className = "bg-green-50 p-3 rounded-lg flex justify-between items-start mb-3";
+        cartItem.innerHTML = `
+            <div>
+            <p class="text-sm font-semibold text-gray-800">${item.name}</p>
+            <p class="text-sm text-gray-600"><i class="fa-solid fa-bangladeshi-taka-sign"></i>${item.price}
+             <i class="fa-solid fa-xmark fa-xs"></i>
+             ${item.quantity}</p>
+            </div>
+            <button onclick="removeFromCart(${item.id})" class="text-gray-400 hover:text-red-500 text-sm">
+            <i class="fa-solid fa-xmark"></i>
+            </button>
+        `;
+        cartContainer.appendChild(cartItem);
+    });
+
+    totalContainer.innerText = `৳${total}`;
+};
 
 
 
